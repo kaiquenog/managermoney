@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  mysql_cadastro:
+    container_name: mysql_cadastro
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'dbcadastro'
+      MYSQL_USER: 'cadastro'
+      MYSQL_PASSWORD: 'cadastro'
+      MYSQL_ROOT_PASSWORD: 'rootpass'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
