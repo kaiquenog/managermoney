@@ -9,6 +9,7 @@ services:
       MYSQL_USER: 'cadastro'
       MYSQL_PASSWORD: 'cadastro'
       MYSQL_ROOT_PASSWORD: 'rootpass'
+      MYSQL_ROOT_HOST: '%'
     ports:
       - '3306:3306'
     expose:
