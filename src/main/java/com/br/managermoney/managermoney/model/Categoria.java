@@ -2,19 +2,24 @@ package com.br.managermoney.managermoney.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name="categoria")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Categoria  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
 
+    @NotNull
+    @Size(min = 3, max =  20)
     private String nome;
 
     public Long getCodigo() {
@@ -32,6 +37,8 @@ public class Categoria  implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
