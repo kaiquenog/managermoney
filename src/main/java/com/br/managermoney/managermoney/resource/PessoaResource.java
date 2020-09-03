@@ -4,6 +4,7 @@ package com.br.managermoney.managermoney.resource;
 import com.br.managermoney.managermoney.event.RecursoCriadoEvent;
 import com.br.managermoney.managermoney.model.Pessoa;
 import com.br.managermoney.managermoney.repository.PessoaRepository;
+import com.br.managermoney.managermoney.service.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Example;
@@ -25,8 +26,8 @@ public class PessoaResource {
     @Autowired
     private ApplicationEventPublisher publisher;
 
-    // @Autowired
-   // private PessoaService pessoaService;
+    @Autowired
+    private PessoaService pessoaService;
 
     @GetMapping
     public ResponseEntity<?> listar(){
@@ -36,7 +37,7 @@ public class PessoaResource {
 
     @PostMapping
     public ResponseEntity<Pessoa> Criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response){
-
+ 
         Pessoa pessoaSalva = pessoaRepository.save(pessoa);
         publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaSalva.getCodigo()));
         return  ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
@@ -56,10 +57,16 @@ public class PessoaResource {
     public void remover(@PathVariable Long codigo){
         pessoaRepository.deleteById(codigo); ;
     }
-/*
+
     @PutMapping("/{codigo}")
-    public ResponseEntity<Pessoa> atualizar(@PathVariable Integer codigo, @Valid @RequestBody Pessoa pessoa){
+    public ResponseEntity<Pessoa> atualizar(@PathVariable Long codigo, @Valid @RequestBody Pessoa pessoa){
         return ResponseEntity.ok(pessoaService.PessoaAtualizar(codigo, pessoa));
     }
-*/
+
+    @PutMapping("/{codigo}/ativo")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void atualizarPropriedadeAtivo(@PathVariable Long codigo, @Valid @RequestBody Boolean ativo){
+        pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
+    }
+
 }
