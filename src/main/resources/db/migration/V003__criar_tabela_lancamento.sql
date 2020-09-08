@@ -18,4 +18,4 @@ ALTER TABLE lancamento  ADD CONSTRAINT `fk_lancamento_categoria`
 
 
 insert into lancamento ( descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa)
-values ('Nota 1', sysdate(), null, 199, 'Nota 1', 'ABC', 1, 1);
+values ('Nota 1', sysdate(), null, 199, 'Nota 1', 'DEBITO', 1, 1);
