@@ -14,12 +14,16 @@ public class PessoaService {
     @Autowired
     PessoaRepository pessoaRepository;
 
-    public Pessoa PessoaAtualizar(Long codigo, Pessoa pessoa){
+    public Pessoa pessoaAtualizar(Long codigo, Pessoa pessoa){
         Pessoa pessoaSalva = getPessoa(codigo);
         BeanUtils.copyProperties(pessoa, pessoaSalva, "codigo");
         return pessoaRepository.save(pessoa);
+    }
 
-
+    public void atualizarStatus(Long codigo, Boolean ativo){
+        Pessoa pessoaSalva = getPessoa(codigo);
+        pessoaSalva.setAtivo(ativo);
+        pessoaRepository.save(pessoaSalva);
     }
 
     public Pessoa getPessoa(Long codigo) {
@@ -30,6 +34,8 @@ public class PessoaService {
         }
         return pessoaSalva;
     }
+
+
 
 
 }
