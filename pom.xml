@@ -79,18 +79,6 @@
             <version>3.11</version>
         </dependency>
 
-        <!-- Hibernate Java 8 -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-java8</artifactId>
-        </dependency>
-
-        <!-- Jackson para Java 8 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
