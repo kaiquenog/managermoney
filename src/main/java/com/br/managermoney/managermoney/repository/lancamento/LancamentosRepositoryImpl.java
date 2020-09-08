@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,12 +70,15 @@ public class LancamentosRepositoryImpl  implements LancamentosRepositoryQuery {
 
         }
         if(lancamentofilter.getDataVencimentoAte() != null ){
+
+
+
             predicates.add(builder.
-                    greaterThanOrEqualTo(root.get("dataVencimento"),lancamentofilter.getDataVencimentoAte()));
+                    greaterThanOrEqualTo(root.get("dataVencimento"), lancamentofilter.getDataVencimentoDe()));
         }
         if(lancamentofilter.getDataVencimentoDe() != null ){
             predicates.add(builder.
-                    lessThanOrEqualTo(root.get("dataVencimento"),lancamentofilter.getDataVencimentoDe()));
+                    lessThanOrEqualTo(root.get("dataVencimento"),lancamentofilter.getDataVencimentoAte()));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);

@@ -17,7 +17,7 @@ public class Lancamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer codigo;
+    private Long codigo;
 
     @NotNull
     private String descricao;
@@ -62,11 +62,11 @@ public class Lancamento implements Serializable {
         return Objects.hash(codigo);
     }
 
-    public Integer getCodigo() {
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

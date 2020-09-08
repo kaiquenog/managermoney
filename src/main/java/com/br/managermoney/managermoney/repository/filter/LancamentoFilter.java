@@ -5,10 +5,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class LancamentoFilter {
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private String dataVencimentoDe;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private String dataVencimentoAte;
 
     private String descricao;
